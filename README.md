@@ -12,9 +12,9 @@ mintty4julia.exe is a renamed copy of Autohotkey (https://www.autohotkey.com/) v
 
 This script intercepts CTRL+C and uses Windows API (GenerateConsoleCtrlEvent) to send SIGINT directly to julia.exe.  See https://docs.microsoft.com/en-us/windows/console/generateconsolectrlevent and https://stackoverflow.com/questions/813086/can-i-send-a-ctrl-c-sigint-to-an-application-on-windows for more information.
 
-The script also determines Julia's execution state by accessing a static memory location of its Mintty host.  This is done to prevent Julia from crashing when an SIGINT event is sent while Julia is idle.  Because this script relies on fixed memory locations of Mintty (and possibily Julia), it should only be used in its current configuration, namely with Mintty 2.9.5 (x86_64-pc-cygwin) and Julia 1.3.1 64bit.
+The script determines Julia's execution state by accessing a static memory location of its Mintty host.  This is done to prevent Julia from crashing when a SIGINT event is sent while Julia is idle.  Because this script relies on fixed memory locations of Mintty (and possibily Julia), it should only be used in its current configuration, namely with Mintty 2.9.5 (x86_64-pc-cygwin) and Julia 1.3.1 64bit.
 
-For each targeted Mintty Terminal Window, the script uses the window's process ID to identify its child Mintty.exe process, which then leads to the identification of the grandchild julia.exe process.  This is made possible by enumerating a list of all active processes along with their process ID's and parent process ID's.
+For each targeted Mintty Terminal Window, the script uses the window's process ID to identify its child process (mintty.exe), which then leads to the identification of the grandchild process (julia.exe).  This is made possible by enumerating a list of all active processes along with their process ID's and parent process ID's.
 
 ## FAQ
 Why Mintty 2.9.5, and where did you get it from? 
