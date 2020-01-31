@@ -1,5 +1,10 @@
+; mintty4julia.ahk
+; Designed to work with Mintty 2.9.5 (x86_64-pc-cygwin) and Julia 1.3.1 64bit. 
+; See https://github.com/oif2003/Mintty4Julia for more information.
+
 #SingleInstance Force
 #NoTrayIcon
+
 ;=============================================
 ; Auto-execute Section
 ;=============================================
@@ -30,7 +35,7 @@ WinWait("\Julia-1.3.1\bin\julia.exe")
 ;Register this script to get notified of events to listen for WINDOWDESTROYED message
 DllCall("RegisterShellHookWindow", "ptr", A_ScriptHwnd)
 msgID := DllCall("RegisterWindowMessage", "Str", "SHELLHOOK")
-OnMessage(msgID, "ShellMessage")
+OnMessage(msgID, "shellMessage")
 
 ;We probably don't need this but just in case...
 DetectHiddenWindows True	
@@ -83,7 +88,7 @@ allMinttiesHaveDied() {
 }
 
 ;Fires whenever a window is destroyed.  Scripts exits after all Mintty+Julia instances are terminated.
-ShellMessage(wParam, lParam, *) {
+shellMessage(wParam, *) {
 	if wParam == 2 {	;HSHELL_WINDOWDESTROYED 
 		if allMinttiesHaveDied() {	;(
 			DllCall("DeregisterShellHookWindow", "ptr", A_ScriptHwnd)
@@ -101,13 +106,14 @@ ShellMessage(wParam, lParam, *) {
 ;Hotkey is only only active if active window is Mintty with title that contains julia.exe path.
 ;This also ensures the loaded Julia version is 1.3.1
 #If WinActive("\Julia-1.3.1\bin\julia.exe")
-	
+
 	^c::	;^=ctrl.  The follow block will run when Ctrl+C is pressed (given the above, only if Mintty is active)
-	
-		;Only continue we have process ID for Julia
-		if juliaPID := findJuliaPID(minttyPID := WinGetPID("A")) { 
+
+		;Continue if we have process ID for Julia and sufficient time has elapsed since last activation.
+		if (A_TimeSincePriorHotkey > GOD_MODE_OFF_DELAY || A_TimeSincePriorHotkey == -1) 
+		&& (juliaPID := findJuliaPID(minttyPID := WinGetPID("A"))){ 
 		
-			;Obtain process handle of Mintty.exe that is associated with the Julia window
+			;Obtain process handle of Mintty.exe associated with Julia
 			pHandle := DllCall("OpenProcess", "UInt", 0x0010, "Char", 0, "UInt", minttyPID, "Ptr")
 			
 			;Read Mintty version from memory.  Continue if we have the current version.
