@@ -17,6 +17,6 @@ The script also determines Julia's execution state by accessing a static memory 
 For each targeted Mintty Terminal Window, the script uses the window's process ID to identify its child Mintty.exe process, which then leads to the identification of the grandchild julia.exe process.  This is made possible by enumerating a list of all active processes along with their process ID's and parent process ID's.
 
 ## FAQ
-1.  Why Mintty 2.9.5, and where did you get it from?
+Why Mintty 2.9.5, and where did you get it from? 
 
 A:  This version of Mintty is taken from a portable Cygwin build (https://github.com/MachinaCore/CygwinPortable).  It is the only readily available binary I found that can display emojis inside Julia REPL and have a semblance of stability.
