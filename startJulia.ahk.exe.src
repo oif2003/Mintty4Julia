@@ -1,0 +1,6 @@
+#SingleInstance Off
+#NoTrayIcon
+if A_Args.Length > 0
+	for _, arg in A_Args
+		argstring .= "`"" arg "`" " 
+SplitPath(A_ScriptName, , , , scriptNameNoExt), Run("AutoHotkey.exe " scriptNameNoExt " " argstring)
