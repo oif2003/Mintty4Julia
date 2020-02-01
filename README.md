@@ -15,7 +15,7 @@ Must have Julia installed at default location, ie: C:\Users\YourUserName\AppData
 3. To start Julia, do one of the following:
     * Run startJulia.ahk.exe
     * Or Drag and drop .jl files onto startJulia.exe
-    * Note: If Julia fails to start, create config.txt with the absolute path of Julia's bin folder.
+    * Note: If Julia fails to start, create config.txt containing the absolute path of Julia's bin folder.
 
     Tip:  You can create a Windows shortcut of startJulia.exe
 
