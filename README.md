@@ -13,7 +13,7 @@ Must have Julia installed at default location, ie: C:\Users\YourUserName\AppData
 1. Download this repository. 
 2. Unzip files maintaining their folder structure.
 3. To start Julia, do one of the following:
-    * Run startJulia.exe
+    * Run startJulia.ahk.exe
     * Or Drag and drop .jl files onto startJulia.exe
 
     Tip:  You can create a Windows shortcut of startJulia.exe
