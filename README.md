@@ -16,7 +16,7 @@ Must have Julia installed at default location, ie: C:\Users\YourUserName\AppData
     * Run startJulia.exe
     * Or Drag and drop .jl files onto startJulia.exe
 
-(Tip:  You can create a Windows shortcut of startJulia.exe)
+    Tip:  You can create a Windows shortcut of startJulia.exe
 
 ## How it Works:
 This script is written using Autohotkey v2 (https://www.autohotkey.com/) version 2.0-a108-a2fa0498 (64bit).  startJulia.ahk.exe is a wrapper that forwards drag and drop parameters to startJulia.ahk.  You can inspect its source through a hex editor.  Its source is also provided as startJulia.ahk.exe.src. 
