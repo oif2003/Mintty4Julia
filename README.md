@@ -4,6 +4,7 @@ AutoHotkey script that starts Julia through Mintty 2.9.5 (64bit)
 - Starts .jl files dragged-n-dropped onto startJulia.exe (each working directory set to same path as .jl file)
 - Finds latest installed version of Julia automatically
 - Nearly 3000 Windows emojis preinstalled (matches the emojis in VS-code)
+- Supports multiple versions of Julia (tested on 1.3.1 64bit, 1.4.0rc1 64bit)
 
 ## Prerequisite:  
 Must have Julia installed at default location, ie: C:\Users\YourUserName\AppData\Local\Julia-1.3.1\bin\julia.exe, or provide path to Julia's bin folder in config.txt.
