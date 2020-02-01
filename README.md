@@ -2,9 +2,9 @@
 AutoHotkey script that starts Julia through Mintty 2.9.5 (64bit)
 - Ctrl + C interrupts running Julia routine without crashing/exiting Julia/Mintty
 - Starts .jl files dragged-n-dropped onto startJulia.exe (each working directory set to same path as .jl file)
-- Finds latest installed version of Julia automatically
+- Finds latest installed version of Julia automatically (unless specified in config.txt)
 - Nearly 3000 Windows emojis preinstalled (matches the emojis in VS-code)
-- Supports multiple versions of Julia (tested on 1.3.1 64bit, 1.4.0rc1 64bit)
+- Supports several versions of Julia (tested on 1.3.1 64bit, 1.4.0rc1 64bit)
 
 ## Prerequisite:  
 Must have Julia installed at default location, ie: C:\Users\YourUserName\AppData\Local\Julia-1.3.1\bin\julia.exe, or provide path to Julia's bin folder in config.txt.
@@ -15,6 +15,7 @@ Must have Julia installed at default location, ie: C:\Users\YourUserName\AppData
 3. To start Julia, do one of the following:
     * Run startJulia.ahk.exe
     * Or Drag and drop .jl files onto startJulia.exe
+    * Note: If Julia fails to start, create config.txt with the absolute path of Julia's bin folder.
 
     Tip:  You can create a Windows shortcut of startJulia.exe
 
