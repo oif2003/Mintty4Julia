@@ -33,6 +33,6 @@ Why Mintty 2.9.5, and where did you get it from?
 A:  This version of Mintty is taken from a portable Cygwin build (https://github.com/MachinaCore/CygwinPortable).  It is the only readily available binary I found that can display emojis inside Julia REPL and have a semblance of stability.
 
 ## Change Log:
-    - Added support for drag and drop
-    - Added support for multiple versions of Julia
-    - Added auto path finding for Julia's bin folder and the ability to specify one in config.txt
+ - Added support for drag and drop
+ - Added support for multiple versions of Julia
+ - Added auto path finding for Julia's bin folder and the ability to specify one in config.txt
