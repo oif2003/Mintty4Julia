@@ -23,7 +23,7 @@ This script is written using Autohotkey v2 (https://www.autohotkey.com/) version
 
 This script intercepts Ctrl+C and uses Windows API (GenerateConsoleCtrlEvent) to send SIGINT directly to julia.exe.  See https://docs.microsoft.com/en-us/windows/console/generateconsolectrlevent and https://stackoverflow.com/questions/813086/can-i-send-a-ctrl-c-sigint-to-an-application-on-windows for more information.
 
-The script determines Julia's execution state by accessing a static memory location of its Mintty host.  This is done to prevent Julia from crashing when a SIGINT event is sent while Julia is idle.  The memory address used appears to be static for the provided mintty.exe (2.9.5 x86_64-pc-cygwin) regardless of the version Julia that is loaded.
+The script determines Julia's execution state by accessing a static memory location of its Mintty host.  This is done to prevent Julia from crashing when a SIGINT event is sent while Julia is idle.  The memory address used appears to be static for the provided mintty.exe (2.9.5 x86_64-pc-cygwin) regardless of julia.exe's version.
 
 For each targeted Mintty Terminal Window, the script uses the window's process ID to identify its child process (mintty.exe), which then leads to the identification of the grandchild process (julia.exe).  This is made possible by enumerating a list of all active processes along with their process ID's and parent process ID's.
 
@@ -31,3 +31,8 @@ For each targeted Mintty Terminal Window, the script uses the window's process I
 Why Mintty 2.9.5, and where did you get it from? 
 
 A:  This version of Mintty is taken from a portable Cygwin build (https://github.com/MachinaCore/CygwinPortable).  It is the only readily available binary I found that can display emojis inside Julia REPL and have a semblance of stability.
+
+## Change Log:
+    - Added support for drag and drop
+    - Added support for multiple versions of Julia
+    - Added auto path finding for Julia's bin folder and the ability to specify one in config.txt
